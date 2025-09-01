@@ -7,6 +7,8 @@ import { Dv1 } from "src/common/v1/D.sol";
 import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract MyContractV2 is Dv1, OwnableUpgradeable {
+    uint256 public constant VERSION = 2;
+
     struct Config {
         uint256 a;
         uint256 b;

@@ -38,6 +38,9 @@ contract MyContractV1Test is BaseTest {
     }
 
     function test_D_upgradeToV2() public {
+        // Check version
+        assertEq(v1.VERSION(), 1, "Initial version should be 1");
+
         // Deploy new implementation
         MyContractV2 newImplementation = new MyContractV2();
 
@@ -52,6 +55,9 @@ contract MyContractV1Test is BaseTest {
 
         // Verify the proxy address remains the same
         assertEq(address(v2), address(v1), "Proxy address should remain the same after upgrade");
+
+        // Check new version
+        assertEq(v2.VERSION(), 2, "Version should be updated to 2");
 
         // Verify state is preserved
         assertEq(v2.a(), 1);
