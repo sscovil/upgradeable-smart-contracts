@@ -84,7 +84,7 @@ abstract contract WithUpgrades is WithUsers {
     /**
      * @dev Test that initialization succeeds with valid parameters.
      */
-    function test_initialize() public virtual {
+    function test_BaseTest_initialize() public virtual {
         // Deploy a new uninitialized implementation
         address implementation = _deployNewImplementation();
 
@@ -103,7 +103,7 @@ abstract contract WithUpgrades is WithUsers {
     /**
      * @dev Test that initializer reverts when called after initialization.
      */
-    function testRevert_initialize_InvalidInitialization() public virtual {
+    function testRevert_BaseTest_initialize_InvalidInitialization() public virtual {
         // Try to call the initializer again on the already initialized proxy
         bytes memory initData = _getInitializerData();
 
@@ -119,7 +119,7 @@ abstract contract WithUpgrades is WithUsers {
      * @dev Test that authorized upgrade succeeds.
      * Only applicable for contracts with UUPS upgradeability.
      */
-    function test_authorizeUpgrade() public virtual {
+    function test_BaseTest_authorizeUpgrade() public virtual {
         // Deploy new implementation
         address newImplementation = _deployNewImplementation();
 
@@ -135,7 +135,7 @@ abstract contract WithUpgrades is WithUsers {
      * @dev Test that unauthorized upgrade reverts.
      * Only applicable for contracts with UUPS upgradeability and access control.
      */
-    function testRevert_authorizeUpgrade_Unauthorized() public virtual {
+    function testRevert_BaseTest_authorizeUpgrade_Unauthorized() public virtual {
         // Deploy new implementation
         address newImplementation = _deployNewImplementation();
 

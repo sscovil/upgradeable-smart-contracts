@@ -8,10 +8,27 @@ import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/O
 
 contract MyContractV1 is Dv1, OwnableUpgradeable {
     uint256 public constant VERSION = 1;
+    uint256 public e;
 
-    function initialize(address initialOwner, uint256 _a, uint256 _b, uint256 _c, uint256 _d) public initializer {
+    function initialize(address initialOwner, uint256 _a, uint256 _b, uint256 _c, uint256 _d)
+        public
+        virtual
+        initializer
+    {
+        __MyContractV1_init(initialOwner, _a, _b, _c, _d);
+    }
+
+    function __MyContractV1_init(address initialOwner, uint256 _a, uint256 _b, uint256 _c, uint256 _d)
+        internal
+        onlyInitializing
+    {
         __Ownable_init(initialOwner);
         __D_init(_a, _b, _c, _d);
+        __MyContractV1_init_unchained(_a, _b, _c, _d);
+    }
+
+    function __MyContractV1_init_unchained(uint256 _a, uint256 _b, uint256 _c, uint256 _d) internal onlyInitializing {
+        e = _a + _b + _c + _d;
     }
 
     function _authorizeUpgrade(address newImplementation) internal virtual override onlyOwner {
