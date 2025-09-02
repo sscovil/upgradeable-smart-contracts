@@ -89,9 +89,9 @@ contract MyContractTest is BaseTest {
 
 contract MockV1 is MyContractV1 {
     function initialize(address initialOwner, uint256 _a, uint256 _b, uint256 _c, uint256 _d)
-    public
-    override
-    initializer
+        public
+        override
+        initializer
     {
         __MyContractV1_init(initialOwner, _a * 2, _b * 2, _c * 2, _d * 2);
     }
