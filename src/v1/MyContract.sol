@@ -10,6 +10,11 @@ contract MyContractV1 is Dv1, OwnableUpgradeable {
     uint256 public constant VERSION = 1;
     uint256 public e;
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+
     function initialize(address initialOwner, uint256 _a, uint256 _b, uint256 _c, uint256 _d)
         public
         virtual
